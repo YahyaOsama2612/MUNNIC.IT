@@ -1,0 +1,286 @@
+/* Universal selector to apply box-sizing to all elements, ensuring padding and borders are included in the element's total width and height */
+* {
+  -webkit-box-sizing: border-box; /* Safari/Chrome */
+  -moz-box-sizing: border-box;    /* Firefox */
+  background-origin: border-box;  /* Set background origin to border box */
+  box-sizing: border-box;         /* Modern standard for box-sizing */
+  padding: 0;                     /* Remove default padding */
+  margin: 0;                      /* Remove default margin */
+}
+
+/* Custom property for the main color theme */
+:root {
+  --main-color: rgb(221, 58, 112); /* Main color for the site */
+}
+
+/* Smooth scrolling behavior for the entire HTML document */
+html {
+  scroll-behavior: smooth; /* Enable smooth scrolling */
+}
+
+/* Remove default bullet points from unordered lists */
+ul {
+  list-style: none; /* No bullet points */
+}
+
+/* Remove underline from links */
+a {
+  text-decoration: none; /* Remove default underline */
+}
+
+/* Basic styling for the body: font, background image, and animation for the background */
+body {
+  font-family: "Poppins"; /* Use Poppins font family */
+  margin: 0;              /* Remove default margin */
+  padding: 0;             /* Remove default padding */
+  font-style: oblique;    /* Apply oblique font style */
+  background-image: url("../images/1600w-F2CyNS5sQdM.webp"); /* Background image */
+  background-repeat: no-repeat; /* Prevent repeating background image */
+  background-size: cover; /* Make background image cover the entire page */
+  animation: pan 6s infinite alternate linear; /* Animate the background position */
+}
+
+/* Keyframe animation to move the background image */
+@keyframes pan {
+  100% {
+    background-position: 15% 50%; /* Move background image to 15% from the left and 50% from the top */
+  }
+}
+
+/* Header section with flexbox layout */
+.header {
+  display: flex;               /* Flexbox layout */
+  justify-content: space-between; /* Space between elements */
+}
+
+/* Styling for the h2 inside the header */
+.header h2 {
+  margin: 20px;                /* Add margin around the header text */
+  padding: 20px 40px;          /* Padding for the header */
+  font-size: 1.5em;            /* Font size */
+}
+
+/* Highlighted color for the span inside h2 */
+.header h2 span {
+  color: var(--main-color);    /* Apply main color */
+}
+
+/* Styling for the icon in the header */
+.header i {
+  margin: auto 100px auto auto; /* Center icon horizontally */
+  cursor: pointer;             /* Change cursor to pointer on hover */
+  font-size: 30px;              /* Set font size */
+  margin-left: 30px;            /* Margin left to separate from the content */
+}
+
+/* Styling for the product container to arrange product cards */
+.product-container {
+  display: flex;              /* Flexbox layout */
+  flex-wrap: wrap;            /* Allow wrapping of items */
+  gap: 20px;                  /* Space between items */
+  justify-content: center;    /* Center items horizontally */
+}
+
+/* Styling for each product card */
+.product-card {
+  width: 200px;               /* Fixed width for product cards */
+  border: 1px solid var(--main-color); /* Border with the main color */
+  border-radius: 8px;         /* Rounded corners */
+  overflow: hidden;           /* Hide overflow content */
+  text-align: center;         /* Center text inside the card */
+  padding: 10px;              /* Padding inside the card */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Light shadow for 3D effect */
+  transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition for hover effects */
+}
+
+/* Hover effect for product card */
+.product-card:hover {
+  transform: translateY(-10px); /* Move the card up on hover */
+  box-shadow: 0px 2px 15px rgb(0 0 0 / 20%); /* Increase shadow on hover */
+}
+
+/* Styling for images inside product cards */
+.product-card img {
+  max-width: 100%;            /* Image width should not exceed the card's width */
+  height: auto;               /* Maintain aspect ratio */
+}
+
+/* Styling for product title (h3) inside product cards */
+.product-card h3 {
+  font-size: 1.2em;           /* Increase font size */
+  margin: 10px 0;             /* Add margin above and below the title */
+}
+
+/* Styling for product price or description */
+.product-card p {
+  font-size: 1.1em;           /* Slightly larger font for the price/description */
+  color: #28a745;             /* Green color for the text */
+}
+
+/* Button inside product card with gradient effect */
+.product-card .button {
+  background-position: right bottom; /* Set initial background position */
+  background-size: 200% 100%; /* Make background size double for animation */
+  padding: 5px;              /* Padding around the button */
+  margin: 10px;              /* Margin around the button */
+  border: 3px solid var(--main-color); /* Border with transparent background */
+  border-radius: 30px;       /* Rounded corners for the button */
+  cursor: pointer;           /* Pointer cursor on hover */
+  transition: 0.3s;           /* Smooth transition for hover effect */
+  background: linear-gradient(to right, var(--main-color) 50%, transparent 50%); /* Gradient background */
+  background-size: 200% 100%; /* Increase background size */
+  background-position: right bottom; /* Position the background initially on the right */
+}
+
+/* Hover effect for the button */
+.product-card .button:hover {
+  background-position: left bottom; /* Move the gradient to the left on hover */
+}
+
+/* Burger menu button */
+.burger {
+  position: fixed;           /* Fix position to the right of the screen */
+  z-index: 3;                /* Ensure it's above other content */
+  right: 0;                  /* Align to the right */
+  top: 0;                    /* Align to the top */
+  display: grid;             /* Use grid layout */
+  place-items: center;       /* Center the icon inside the button */
+  padding: 0;                /* No padding */
+  width: 82px;               /* Fixed width */
+  height: 82px;              /* Fixed height */
+  font-size: 30px;           /* Font size for the icon */
+  border: 0px;               /* No border */
+  background: transparent;   /* Transparent background */
+  cursor: pointer;          /* Pointer cursor on hover */
+}
+
+/* Initially hide the burger icon */
+.burger i {
+  display: none;
+}
+
+/* Hide the regular header icon when the menu is open */
+body.open .header i {
+  display: none;
+}
+
+/* Display burger icon when the menu is open */
+body.open .burger i {
+  display: block;
+}
+
+/* Cart sidebar styling */
+.cart {
+  position: fixed;           /* Fixed position to the right side */
+  top: 0;                    /* Align to the top */
+  right: -300px;             /* Initially hide the cart off-screen */
+  width: 300px;              /* Fixed width */
+  height: 100%;              /* Full height */
+  background-color: whitesmoke; /* Light background color */
+  box-shadow: -2px 0px 10px rgba(0, 0, 0, 0.1); /* Shadow for the cart */
+  padding: 20px;             /* Padding inside the cart */
+  transition: right 0.3s ease; /* Smooth transition when the cart appears */
+}
+
+/* Cart heading (h2) */
+.cart h2 {
+  margin-bottom: 20px;       /* Margin below the heading */
+}
+
+/* Styling for the 'Remove All' button */
+.cart .remove-all {
+  background-color: rgb(240, 88, 88); /* Red background */
+  color: white;                     /* White text */
+  padding: 2px 5px;                 /* Padding around the text */
+  cursor: pointer;                 /* Pointer cursor on hover */
+  border-radius: 4px;               /* Rounded corners */
+  text-align: center;               /* Center the text */
+  margin: 10px;                     /* Margin around the button */
+}
+
+/* Hover effect for the 'Remove All' button */
+.cart .remove-all:hover {
+  background-color: #dc3545; /* Darker red on hover */
+}
+
+/* Cart items container */
+.cart-items {
+  overflow-y: auto;            /* Enable scrolling if items overflow */
+  max-height: 80%;             /* Limit the maximum height to 80% */
+}
+
+/* Initially hide the cart items with opacity and translation */
+.cart-item {
+  display: flex;               /* Flexbox layout for cart items */
+  align-items: center;         /* Align items vertically */
+  border-bottom: 1px solid #ddd; /* Border between cart items */
+  padding: 10px 0;             /* Padding for each item */
+  margin-bottom: 10px;         /* Margin below each item */
+  opacity: 0;                  /* Start with no visibility */
+  transform: translateY(20px); /* Start with a 20px downward offset */
+  animation: slideIn 0.5s ease-out forwards; /* Animation for sliding in */
+  animation-delay: 0.2s;       /* Delay the animation slightly */
+}
+
+/* Keyframe animation for cart item sliding and fading in */
+@keyframes slideIn {
+  0% {
+    opacity: 0;                /* Start invisible */
+    transform: translateY(20px); /* Start below the original position */
+  }
+  100% {
+    opacity: 1;                /* Fade in to full visibility */
+    transform: translateY(0);  /* Move to original position */
+  }
+}
+
+/* Styling for images inside cart items */
+.cart-item img {
+  width: 60px;                 /* Fixed width for product images */
+  height: 60px;                /* Fixed height */
+  object-fit: cover;           /* Maintain aspect ratio */
+  margin-right: 15px;          /* Space between image and text */
+}
+
+/* Styling for the title (h3) inside each cart item */
+.cart-item h3 {
+  flex: 1;                     /* Allow the title to take up available space */
+  font-size: 16px;             /* Font size for the title */
+}
+
+/* Styling for the price or description (p) inside each cart item */
+.cart-item p {
+  font-size: 14px;             /* Font size for the price/description */
+}
+
+/* Styling for the delete icon/button inside cart item */
+.cart-item div {
+  cursor: pointer;            /* Pointer cursor on hover */
+}
+
+/* Styling for cart icon (header) and burger icon */
+.header i, .burger i {
+  cursor: pointer;            /* Pointer cursor on hover */
+  font-size: 30px;             /* Font size for the icons */
+}
+
+/* Display the cart when the menu is open */
+body.open .cart {
+  right: 0;                    /* Move the cart into view */
+}
+
+/* Delete button styling inside cart */
+.delete-button {
+  background-color: rgb(240, 88, 88); /* Red background */
+  color: white;                     /* White text */
+  padding: 2px 5px;                 /* Padding around the text */
+  cursor: pointer;                 /* Pointer cursor on hover */
+  border-radius: 4px;               /* Rounded corners */
+  text-align: center;               /* Center the text */
+  margin: 10px;                     /* Margin around the button */
+}
+
+/* Hover effect for the delete button */
+.delete-button:hover {
+  background-color: #dc3545; /* Darker red on hover */
+}
